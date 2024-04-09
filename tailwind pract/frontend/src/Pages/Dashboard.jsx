@@ -1,9 +1,13 @@
+import Appbar from "../components/Appbar";
+import Balacnce from "../components/Balacnce";
+
 function Dashboard() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <>
+      <Appbar />
+      <Balacnce />
+    </>
+  );
 }
 
-export default Dashboard
+export default Dashboard;
