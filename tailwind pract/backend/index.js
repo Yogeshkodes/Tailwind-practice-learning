@@ -1,12 +1,13 @@
+// backend/index.js
 const express = require("express");
 const cors = require("cors");
+const rootRouter = require("./routes/index");
+
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const mainRouter = require("./routes/index");
-const app = express();
+app.use("/api/v1", rootRouter);
 
-app.use("/app/v1", mainRouter);
-
-const PORT = 3000;
+app.listen(3000);
