@@ -6,7 +6,10 @@ import { BottomWarning } from "../components/BottomWarning";
 import { useState } from "react";
 import axios from "axios";
 
+import { useNavigate } from "react-router-dom";
+
 function Signup() {
+  const navigate = useNavigate();
   const [Firstname, setFistname] = useState("");
   const [Lastname, setLastname] = useState("");
   const [Username, setUsername] = useState("");
@@ -46,13 +49,20 @@ function Signup() {
         <div className="pt-4">
           <Button
             label={"Sign up"}
-            onClick={() => {
-              axios.post("https://localhost:3000/api/v1/user/signup", {
-                username: Username,
-                password: Password,
-                firstName: Firstname,
-                lastName: Lastname,
-              });
+            onClick={async () => {
+              const response = await axios.post(
+                "http://localhost:3000/api/v1/user/signup",
+                {
+                  username: Username,
+                  password: Password,
+                  firstName: Firstname,
+                  lastName: Lastname,
+                }
+              );
+
+              console.log(response.data);
+              localStorage.setItem("token", response.data.token);
+              navigate("/dashboard");
             }}
           />
         </div>
