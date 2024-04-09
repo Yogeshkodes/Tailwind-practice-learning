@@ -6,8 +6,10 @@ function Dashboard() {
   return (
     <>
       <Appbar />
-      <Balacnce value={10000} />
-      <Users />
+      <div className="m-8">
+        <Balacnce value={10000} />
+        <Users />
+      </div>
     </>
   );
 }
